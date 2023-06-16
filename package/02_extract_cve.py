@@ -5,7 +5,7 @@
 import re
 
 # Define Input File
-raw_output = './output/raw_pdf_extract.txt'
+raw_output = './output/01_raw_pdf_extract.txt'
 
 # Define Output File
 cve_output = './output/cve_extract.txt'

@@ -5,7 +5,7 @@ import pdfplumber
 from os import path
 
 # Define Output File
-raw_output = './output/raw_pdf_extract.txt'
+raw_output = './output/01_raw_pdf_extract.txt'
 
 # Define Input Directory /  File
 file_input = input('[Enter path to PDF file]: ')
