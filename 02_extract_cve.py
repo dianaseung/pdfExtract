@@ -4,8 +4,13 @@
 # Import required library.
 import re
 
-# Open the file and create a pdf object.
+# Define Input File
+raw_output = './output/raw_pdf_extract.txt'
+
+# Define Output File
 cve_output = './output/cve_extract.txt'
+
+# Open the file and search text for regex match
 with open (raw_output, 'rt') as pdf_extract:
     for line in pdf_extract:
         regex = r'CVE-\d{4,5}-\d{4,7}'
