@@ -1,6 +1,7 @@
-# Project Specfic
+# PDF Extract Project Specfic
 output/
 input/
+input.pdf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
