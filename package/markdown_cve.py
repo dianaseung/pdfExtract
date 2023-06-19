@@ -11,6 +11,7 @@ def md_cve():
     # Open the file and create a pdf object.
     with open (cve_output, 'rt') as cve_list:
         x = 1
+        y = 1
         for cve in cve_list:
             # Regex for checking if line is a CVE
             regex = r'CVE-\d{4,5}-\d{4,7}'
@@ -26,8 +27,10 @@ def md_cve():
                 x = x+1
             else:
                 # If not CVE, format it as follows. Currently set to h2 heading
-                md_start = '##'
+                md_start = '## ' + str(y) + '.'
                 print(md_start, cleaned_cve.strip(), file=open(md_output, 'a'))
-    print("Markdown format applied to CVE list from", cve_output, "to", md_output)
+                y = y+1
+    if (os.path.isfile(md_output) == True):
+        print("SUCCESS: Markdown format applied to CVE list from", cve_output, "to", md_output)
 
 md_cve()
