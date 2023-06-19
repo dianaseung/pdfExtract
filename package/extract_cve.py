@@ -3,6 +3,7 @@
 
 # Import required library.
 import re
+import os
 from package.setfiles import raw_output as raw_output
 from package.setfiles import cve_output as cve_output
 
@@ -29,7 +30,7 @@ def extract_cve():
         # Print all uniques in raw_list to cve_output file
         for i in range(len(raw_list)):
             print(raw_list[i], file=open(cve_output, 'a'))
-                    
-    print("CVE list extracted from", raw_output, "to", cve_output)
+    if (os.path.isfile(cve_output) == True): 
+        print("SUCCESS: CVE list extracted from", raw_output, "to", cve_output)
 
 extract_cve()
