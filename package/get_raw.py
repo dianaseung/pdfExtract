@@ -34,6 +34,6 @@ def get_raw():
                 print(pageText.extract_text(), file=open(raw_output,'a'))
             print("SUCCESS: Text extracted from", file_input, "to", raw_output)
         else:
-            print('File already exists')
+            print('File already exists, skipping extract. Please delete', raw_output, "to get new extract.")
 
 get_raw()
