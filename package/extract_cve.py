@@ -23,7 +23,6 @@ def extract_cve():
                 for x in result:
                     # Since findall can return multiple results, just check first result and append it if it doesn't exist
                     if x[0] not in raw_list:
-                        print('First in it:', x[0])
                         raw_list.append(x[0])
                     else:
                         dup_list.append(x[0])
