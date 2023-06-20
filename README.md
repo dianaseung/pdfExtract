@@ -39,8 +39,8 @@ What does this script do?
     ├── output/                                 # Directory of all output
     │   ├── 230620_151435                       # timestamp dir
     │   │   ├── 01_raw_pdf_extract.txt          # output file - Raw text extract from PDF
-    │   │   ├── 02_raw_pdf_extract.txt          # output file - text list of CVE
-    │   │   ├── 01_raw_pdf_extract.txt          # output file - CVE list formatted
+    │   │   ├── 02_cve_extract.txt              # output file - text list of CVE
+    │   │   ├── 03_md_cve_list.txt              # output file - CVE list formatted
     ├── package                                 # 
     │   ├── setfiles.py                         # set output file names
     │   ├── get_raw.py                          # Step 1 - extract raw text from PDF
@@ -62,7 +62,7 @@ Install [Python3](https://docs.python-guide.org/starting/install3/linux/) and [P
     ```
     pip install -r requirements.txt
     ```
-2. Place source PDF file in directory
+2. Place source PDF file in directory (i.e. `sample.pdf`)
     <p align="center"><img src="/media/pdfExtract-dir.png" alt="Example of pdfExtract dir with source PDF file" /></p>
 3. Run script
     ```
@@ -72,7 +72,10 @@ Install [Python3](https://docs.python-guide.org/starting/install3/linux/) and [P
     - Input extract target: CVE, component, or both
     - Input format output: JIRA or Excel
     <p align="center"><img src="/media/pdfExtract-script.gif" alt="Preview of running pdfExtract script" /></p>
-4. See /output/{timestamp}/ directory for output files
+4. See `/output/{timestamp}/` directory for output files
+    - 01_raw_pdf_extract.txt
+    - 02_cve_extract.txt
+    - 03_md_cve_list.txt
 
 ---
 
