@@ -8,9 +8,9 @@ from package.setfiles import cve_output as cve_output
 from package.setfiles import md_output as md_output
 
 def md_cve():
-    format  = input("Format as (jira or excel): ")
+    format  = input("\n[ Format output ]: (JIRA or Excel) ")
     while format.lower() not in {"jira", "excel"}:
-        format = input("Format as (jira or excel): ")
+        format = input("\n[ Format output ]: (JIRA or Excel) ")
 
     # Open the file and create a pdf object.
     with open (cve_output, 'rt') as cve_list:
@@ -23,8 +23,6 @@ def md_cve():
             cleaned_cve = cve.strip().replace(' ', '')
             # If line matches CVE regex, convert it into an ordered list with CVE URL link.
             if regex_find.match(cve):
-                # Include ordered list in start
-                # md_start = str(x) + '. ['
                 if format.lower() == 'excel':
                     md_start = '=HYPERLINK("https://nvd.nist.gov/vuln/detail/'
                     md_url  = '", "'
@@ -40,7 +38,6 @@ def md_cve():
                 print(md_start.strip(), cleaned_cve.strip(), md_url.strip(), cleaned_cve.strip(), md_end.strip(), sep="", file=open(md_output,'a'))
                 x = x+1
             else:
-                # If not CVE, format it as follows. Currently set to h2 heading
                 md_start = ' ' + str(y) + '.'
                 md_end = '|'
                 print(cleaned_cve.strip(), file=open(md_output, 'a'))

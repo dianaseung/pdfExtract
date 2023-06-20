@@ -6,7 +6,6 @@ import package.get_raw
 import package.extract_cve
 import package.markdown_cve
 
-
 package = reload(package)
 
 package.get_raw
