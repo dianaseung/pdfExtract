@@ -15,7 +15,7 @@ Python script to extract all CVE from a .pdf file into a .txt list, and format i
 
 <p align="center"><img src="/media/pdfExtract-output.gif" alt="Preview of pdfExtract output" /></p>
 
-*Note: Support for CVE and component extraction, mentions of other security vulnerability such as SQL injection or XSS attacks must be manually extracted.*
+*Note: Support for CVE and component extraction only; other mentions of security vulnerability such as SQL injection or XSS attacks must be manually extracted.*
 
 ---
 
