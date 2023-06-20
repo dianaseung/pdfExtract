@@ -11,8 +11,8 @@
 
 ## About CVE-from-PDF Extract: Overview
 ---
-Python bash script quickly sets up a basic Liferay Tomcat bundle and MySQL database for Liferay Support testing.
-Alternative to using Docker compose to setup a standard Liferay bundle
+Python bash to extract all mention of CVE from a PDF file, and format it into a JIRA-friendly or Excel/Google Sheets-friendly list, complete with hyperlink to NVD page.  
+Support for CVE and component extraction, mentions of other security vulnerability such as SQL injection or XSS attacks must be manually extracted.
 
 <p align="center">
 <img src="/media/pdfExtract-script.gif" alt="Preview of quickLR script functionality" />
@@ -30,11 +30,12 @@ What does this script do?
 4. From .txt file (CVE list), formats into JIRA-ready or Excel-ready list with hyperlinks, ready to copy and paste.
 
 
-### Folder Structure
+### Structure
 
 <details>
 <summary>Folder Structure</summary>
 <br>
+
     pdfExtract
     ├── output/                                 # Directory of all output
     │   ├── 230620_151435                       # timestamp dir
@@ -54,18 +55,18 @@ What does this script do?
 
 ---
 
-## SETUP
+## Setup
 Install [Python3](https://docs.python-guide.org/starting/install3/linux/) and [PIP](https://pip.pypa.io/en/stable/installation/) if not already installed 
 
-### pdfExtract Installation / Setup
+### Installation / Setup
 1. Install dependencies
     ```
     pip install -r requirements.txt
     ```
 2. Place source PDF file in directory
-    <p align="center">
-    <img src="/media/pdfExtract-dir.png" alt="Example of pdfExtract dir with source PDF file />
-    </p>
+<p align="center">
+<img src="/media/pdfExtract-dir.png" alt="Example of pdfExtract dir with source PDF file" />
+</p>
 3. Run script
     ```
     ./start.py
