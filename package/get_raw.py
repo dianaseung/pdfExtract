@@ -2,23 +2,26 @@
 
 # Import required library.
 import pdfplumber
+import os
 from os import path
 from package.setfiles import raw_output as raw_output
-
-# # Define Output File
-# raw_output = './output/01_raw_pdf_extract.txt'
+from package.setfiles import timestamp as timestamp
 
 def get_raw():
-# Define Input Directory /  File
-    file_input = input('[Enter path to PDF file]: ')
+    # Setup
+    subdir = 'output/' + timestamp
+    os.makedirs(subdir)
+
+    # Define Input Directory /  File
+    file_input = input('\n[ Enter path to PDF file ]: ')
 
     input_name, input_extension = path.splitext(file_input)
 
     while (path.isfile(file_input) == False) or (input_extension.lower() != '.pdf'):
-        print("ERROR: Invalid file -", file_input, "(extension:", input_extension, ")\n")
-        file_input = input('[Enter valid path to PDF file]: ')
+        print("ERROR: Invalid file type -", file_input, "(extension:", input_extension, ")\n")
+        file_input = input('\n[ Enter valid path to PDF file ]: ')
         input_name, input_extension = path.splitext(file_input)
-        print("INFO: New input file -", file_input, "(extension:", input_extension, ")")
+        print("INFO: New input file -", input_name, "(extension:", input_extension, ")")
     else:
         if (path.isfile(raw_output) == False):
             # Open the file and create a pdf object.
