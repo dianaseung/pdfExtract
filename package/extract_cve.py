@@ -13,14 +13,13 @@ def extract_cve():
         # Arrays for checking for Duplicates
         raw_list = []
         dup_list = []
-        extract_target  = input("Extract target (cve, component or both): ")
+        extract_target  = input("\n[ Extract target ]: (cve, component or both) ")
         while extract_target.lower() not in {"cve", "component", "both"}:
-            extract_target = input("Extract target (cve, component or both): ")
+            extract_target = input("\n[ Extract target ]: (cve, component or both) ")
 
         # Check the raw PDF extract line by line for regex match
         for line in pdf_extract:
             # This regex searchs for either CVE or Component mentions -- adjust regex here as needed
-            # regex = r'(CVE-\d{4,5}-\d{4,7}|Components+(\S+))'
             if extract_target.lower() == 'cve':
                 regex = r'CVE-\d{4,5}-\d{4,7}'
             elif extract_target.lower() == 'component':
@@ -35,7 +34,6 @@ def extract_cve():
             if result:
                 for x in result:
                     # To print all including duplicates
-                    print("[DEBUG] x is", x)
                     if extract_target == 'cve':
                         if x not in raw_list:
                             raw_list.append(x)
