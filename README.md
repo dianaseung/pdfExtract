@@ -12,11 +12,10 @@
 ## About CVE-from-PDF Extract: Overview
 ---
 Python bash to extract all mention of CVE from a PDF file, and format it into a JIRA-friendly or Excel/Google Sheets-friendly list, complete with hyperlink to NVD page.  
-Support for CVE and component extraction, mentions of other security vulnerability such as SQL injection or XSS attacks must be manually extracted.
 
-<p align="center">
-<img src="/media/pdfExtract-script.gif" alt="Preview of quickLR script functionality" />
-</p>
+<p align="center"><img src="/media/pdfExtract-script.gif" alt="Preview of quickLR script functionality" /></p>
+
+*Note: Support for CVE and component extraction, mentions of other security vulnerability such as SQL injection or XSS attacks must be manually extracted.*
 
 ---
 
@@ -64,9 +63,7 @@ Install [Python3](https://docs.python-guide.org/starting/install3/linux/) and [P
     pip install -r requirements.txt
     ```
 2. Place source PDF file in directory
-<p align="center">
-<img src="/media/pdfExtract-dir.png" alt="Example of pdfExtract dir with source PDF file" />
-</p>
+    <p align="center"><img src="/media/pdfExtract-dir.png" alt="Example of pdfExtract dir with source PDF file" /></p>
 3. Run script
     ```
     ./start.py
@@ -74,6 +71,7 @@ Install [Python3](https://docs.python-guide.org/starting/install3/linux/) and [P
     - Input source PDF file name
     - Input extract target: CVE, component, or both
     - Input format output: JIRA or Excel
+    <p align="center"><img src="/media/pdfExtract-script.gif" alt="Preview of running pdfExtract script" /></p>
 4. See /output/{timestamp}/ directory for output files
 
 ---
