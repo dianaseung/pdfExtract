@@ -1,1 +1,81 @@
-# pdfExtract
+<h1 align="center">CVE-from-PDF Extract</h1>
+
+<p align="center">
+<img src="https://img.shields.io/maintenance/yes/2023?style=for-the-badge" alt="Maintenance" />
+<img src="https://img.shields.io/github/last-commit/dianaseung/pdfExtract?style=for-the-badge" alt="Last Commit" />
+<img src="https://img.shields.io/github/v/tag/dianaseung/pdfExtract?style=for-the-badge" alt="Latest Tag" />
+<img src="https://img.shields.io/github/license/dianaseung/pdfExtract?style=for-the-badge" alt="License" />
+</p>
+
+---
+
+## About CVE-from-PDF Extract: Overview
+---
+Python bash script quickly sets up a basic Liferay Tomcat bundle and MySQL database for Liferay Support testing.
+Alternative to using Docker compose to setup a standard Liferay bundle
+
+<p align="center">
+<img src="/media/pdfExtract-script.gif" alt="Preview of quickLR script functionality" />
+</p>
+
+---
+
+### Functionality
+
+What does this script do?
+1. Extract text from a .PDF file to a .txt file (raw extract)
+2. Input extract target: CVE, Component, or both
+3. From .txt file (raw extract), find all extract target (i.e. CVE) into .txt file (CVE list)
+4. Input format output: JIRA markdown format, or Excel sheet
+4. From .txt file (CVE list), formats into JIRA-ready or Excel-ready list with hyperlinks, ready to copy and paste.
+
+
+### Folder Structure
+
+<details>
+<summary>Folder Structure</summary>
+<br>
+    pdfExtract
+    ├── output/                                 # Directory of all output
+    │   ├── 230620_151435                       # timestamp dir
+    │   │   ├── 01_raw_pdf_extract.txt          # output file - Raw text extract from PDF
+    │   │   ├── 02_raw_pdf_extract.txt          # output file - text list of CVE
+    │   │   ├── 01_raw_pdf_extract.txt          # output file - CVE list formatted
+    ├── package                                 # 
+    │   ├── setfiles.py                         # set output file names
+    │   ├── get_raw.py                          # Step 1 - extract raw text from PDF
+    │   ├── extract_cve.py                      # Step 2 - find all CVE in text
+    │   ├── markdown_cve.py                     # Step 3 - format CVE list
+    │   ├── ...                                 # 
+    └ start.py                                  # Run script
+    └ requirements.txt                          # Install dependencies
+</details>
+
+
+---
+
+## SETUP
+Install [Python3](https://docs.python-guide.org/starting/install3/linux/) and [PIP](https://pip.pypa.io/en/stable/installation/) if not already installed 
+
+### pdfExtract Installation / Setup
+1. Install dependencies
+    ```
+    pip install -r requirements.txt
+    ```
+2. Place source PDF file in directory
+    <p align="center">
+    <img src="/media/pdfExtract-dir.png" alt="Example of pdfExtract dir with source PDF file />
+    </p>
+3. Run script
+    ```
+    ./start.py
+    ```
+    - Input source PDF file name
+    - Input extract target: CVE, component, or both
+    - Input format output: JIRA or Excel
+4. See /output/{timestamp}/ directory for output files
+
+---
+
+## Upcoming Planned Features
+- None yet
