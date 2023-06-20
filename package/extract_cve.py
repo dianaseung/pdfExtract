@@ -13,20 +13,50 @@ def extract_cve():
         # Arrays for checking for Duplicates
         raw_list = []
         dup_list = []
+        extract_target  = input("Extract target (cve, component or both): ")
+        while extract_target.lower() not in {"cve", "component", "both"}:
+            extract_target = input("Extract target (cve, component or both): ")
+
         # Check the raw PDF extract line by line for regex match
         for line in pdf_extract:
             # This regex searchs for either CVE or Component mentions -- adjust regex here as needed
-            regex = r'(CVE-\d{4,5}-\d{4,7}|Components+(\S+))'
+            # regex = r'(CVE-\d{4,5}-\d{4,7}|Components+(\S+))'
+            if extract_target.lower() == 'cve':
+                regex = r'CVE-\d{4,5}-\d{4,7}'
+            elif extract_target.lower() == 'component':
+                regex = r'Components+(\S+)'
+            elif extract_target.lower() == 'both':
+                regex = r'(CVE-\d{4,5}-\d{4,7}|Components+(\S+))'
+            else:
+                regex = r'CVE-\d{4,5}-\d{4,7}'
             regex_find = re.compile(regex)
             result = regex_find.findall(line)
             # If result is not empty
             if result:
                 for x in result:
-                    # Since findall can return multiple results, just check first result and append it if it doesn't exist
-                    if x[0] not in raw_list:
-                        raw_list.append(x[0])
+                    # To print all including duplicates
+                    print("[DEBUG] x is", x)
+                    if extract_target == 'cve':
+                        if x not in raw_list:
+                            raw_list.append(x)
+                        else:
+                            dup_list.append(x)
+                    elif extract_target == 'component':
+                        # Since findall can return multiple results, just check first result and append it if it doesn't exist
+                        if x[0] not in raw_list:
+                            raw_list.append(x[0])
+                        else:
+                            dup_list.append(x[0])
+                    elif extract_target == 'both':
+                        if x[0] not in raw_list:
+                            raw_list.append(x[0])
+                        else:
+                            dup_list.append(x[0])
                     else:
-                        dup_list.append(x[0])
+                        if x[0] not in raw_list:
+                            raw_list.append(x[0])
+                        else:
+                            dup_list.append(x[0])
         # Print all uniques in raw_list to cve_output file
         for i in range(len(raw_list)):
             print(raw_list[i], file=open(cve_output, 'a'))
