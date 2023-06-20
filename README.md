@@ -13,7 +13,7 @@
 ---
 Python bash to extract all mention of CVE from a PDF file, and format it into a JIRA-friendly or Excel/Google Sheets-friendly list, complete with hyperlink to NVD page.  
 
-<p align="center"><img src="/media/pdfExtract-script.gif" alt="Preview of quickLR script functionality" /></p>
+<p align="center"><img src="/media/pdfExtract-output.gif" alt="Preview of pdfExtract output" /></p>
 
 *Note: Support for CVE and component extraction, mentions of other security vulnerability such as SQL injection or XSS attacks must be manually extracted.*
 
