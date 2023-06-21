@@ -13,23 +13,24 @@ def extract_cve():
         # Arrays for checking for Duplicates
         raw_list = []
         dup_list = []
-        extract_target  = input("\n[ Extract target ]: (cve, component or both) ")
-        while extract_target.lower() not in {"cve", "component", "both"}:
-            extract_target = input("\n[ Extract target ]: (cve, component or both) ")
+        extract_target  = input("\n[ Extract target ]: (cve, keyword or both) ")
+        while extract_target.lower() not in {"cve", "keyword", "both"}:
+            extract_target = input("\n[ Extract target ]: (cve, keyword or both) ")
 
+        keyword = input("[ Input keyword to search: ] ")
         # Check the raw PDF extract line by line for regex match
         for line in pdf_extract:
             # This regex searchs for either CVE or Component mentions -- adjust regex here as needed
             if extract_target.lower() == 'cve':
                 regex = r'CVE-\d{4,5}-\d{4,7}'
-            elif extract_target.lower() == 'component':
-                regex = r'Components+(\S+)'
+            elif extract_target.lower() == 'keyword':
+                regex = re.escape(keyword) + r'+(\S+)'
             elif extract_target.lower() == 'both':
-                regex = r'(CVE-\d{4,5}-\d{4,7}|Components+(\S+))'
+                regex = r'(CVE-\d{4,5}-\d{4,7}|' + re.escape(keyword) + r'+(\S+))'
             else:
                 regex = r'CVE-\d{4,5}-\d{4,7}'
             regex_find = re.compile(regex)
-            result = regex_find.findall(line)
+            result = regex_find.findall(line)   
             # If result is not empty
             if result:
                 for x in result:
@@ -39,12 +40,12 @@ def extract_cve():
                             raw_list.append(x)
                         else:
                             dup_list.append(x)
-                    elif extract_target == 'component':
+                    elif extract_target == 'keyword':
                         # Since findall can return multiple results, just check first result and append it if it doesn't exist
-                        if x[0] not in raw_list:
-                            raw_list.append(x[0])
+                        if x not in raw_list:
+                            raw_list.append(x)
                         else:
-                            dup_list.append(x[0])
+                            dup_list.append(x)
                     elif extract_target == 'both':
                         if x[0] not in raw_list:
                             raw_list.append(x[0])
