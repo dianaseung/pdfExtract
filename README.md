@@ -59,14 +59,24 @@ Install [Python3](https://docs.python-guide.org/starting/install3/linux/) and [P
 
 ### Installation / Setup
 1. Install dependencies
+    In Linux:
     ```
     pip install -r requirements.txt
+    ```
+    In Windows (cmd):
+    ```
+    py -m pip install -r requirements.txt
     ```
 2. Place source PDF file in directory (i.e. `sample.pdf`)
     <p align="center"><img src="/media/pdfExtract-dir.png" alt="Example of pdfExtract dir with source PDF file" /></p>
 3. Run script
+    In Linux:
     ```
     ./start.py
+    ```
+    In Windows (cmd):
+    ```
+    py start.py
     ```
     - Input source PDF file name
     - Input extract target: CVE, component, or both
